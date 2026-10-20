@@ -1,0 +1,15 @@
+baseURL = "https://5glinux.com/"
+locale = "en-us"
+title = "Alejandro Bonilla · 5glinux"
+disableKinds = ["section", "taxonomy", "term", "RSS", "sitemap", "404"]
+enableRobotsTXT = false
+
+[params]
+  description = "Alejandro Bonilla: AI and cloud native infrastructure architect. Home lab notes on Kubernetes, SUSE Virtualization, storage and GPUs."
+  blog = "https://blog.5glinux.com/"
+  feed = "https://blog.5glinux.com/index.xml"
+  latest = 5
+
+# Refetch the blog feed on every build instead of reusing a cached copy.
+[caches.getresource]
+  maxAge = 0

@@ -1,0 +1,36 @@
+- name: Harvester CLI
+  role: Maintainer
+  text: "A kubectl-style command line for creating and managing VMs on SUSE Virtualization. v0.5.0 supports 1.9, prints GitOps-ready YAML and installs with Homebrew."
+  links:
+    - { label: "Repo", url: "https://github.com/abonillabeeche/harvester-cli" }
+    - { label: "Post", url: "https://blog.5glinux.com/posts/harvester-cli/" }
+- name: SUSE Virtualization (Harvester)
+  role: Contributor
+  text: "PXE network boot and high-performance disk settings in the UI, Cloudbase-Init for Windows guests, and the Windows VM templates with Hyper-V enlightenments."
+  links:
+    - { label: "UI extension", url: "https://github.com/harvester/harvester-ui-extension/pulls?q=is%3Apr+author%3Aabonillabeeche" }
+    - { label: "Post", url: "https://blog.5glinux.com/posts/windows-vms-hyperv-enlightenments/" }
+- name: NVIDIA AI Cluster Runtime
+  role: Contributor
+  text: "A Rancher Fleet deployer and SUSE Linux Enterprise Server support on RKE2, both shipped in AICR 1.1."
+  links:
+    - { label: "Repo", url: "https://github.com/NVIDIA/aicr" }
+    - { label: "Post", url: "https://blog.5glinux.com/posts/nvidia-aicr-fleet-sles/" }
+- name: Longhorn v2 over RDMA
+  role: Contributor
+  text: "RoCEv2 transport for Longhorn's SPDK-based v2 data engine, in review across four repositories."
+  links:
+    - { label: "PR", url: "https://github.com/longhorn/longhorn-manager/pull/5107" }
+    - { label: "Post", url: "https://blog.5glinux.com/posts/longhorn-v2-spdk-rdma-vs-tcp/" }
+- name: LVM CSI driver
+  role: Contributor
+  text: "Thin-pool chunk-size tuning and snapshot fixes for SUSE Virtualization's LVM storage, plus LUKS2 encryption at rest (in review)."
+  links:
+    - { label: "Repo", url: "https://github.com/harvester/csi-driver-lvm" }
+    - { label: "Post", url: "https://blog.5glinux.com/posts/lvm-thin-suse-virtualization/" }
+- name: Windows golden images
+  role: Author
+  text: "Build a reusable Windows Server image for SUSE Virtualization with VMDP drivers, Cloudbase-Init and sysprep, using kubectl or Terraform."
+  links:
+    - { label: "Repo", url: "https://github.com/abonillabeeche/harvester-windows-cloudbase" }
+    - { label: "Post", url: "https://blog.5glinux.com/posts/windows-golden-image-sysprep-suse-virtualization/" }

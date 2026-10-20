@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ site.Title }}</title>
+  <meta name="description" content="{{ site.Params.description }}">
+  <link rel="canonical" href="{{ site.BaseURL }}">
+  <link rel="alternate" type="application/rss+xml" title="5glinux blog" href="{{ site.Params.feed }}">
+  <meta property="og:type" content="profile">
+  <meta property="og:title" content="{{ site.Title }}">
+  <meta property="og:description" content="{{ site.Params.description }}">
+  <meta property="og:url" content="{{ site.BaseURL }}">
+  <meta property="og:image" content="{{ absURL "images/og-default.jpg" }}">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Alejandro Bonilla",
+    "url": "{{ site.BaseURL }}",
+    "image": "{{ absURL "images/alejandro-bonilla.jpg" }}",
+    "jobTitle": "Domain Solution Architect, AI and cloud native infrastructure",
+    "worksFor": { "@type": "Organization", "name": "SUSE" },
+    "sameAs": [
+      "https://blog.5glinux.com/",
+      "https://github.com/abonillabeeche",
+      "https://www.linkedin.com/in/alejandrobonilla"
+    ]
+  }
+  </script>
+  {{ with resources.Get "site.css" | minify | fingerprint }}<link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}">{{ end }}
+</head>
+<body>
+<main>
+  <header class="hero">
+    <img class="portrait" src="/images/alejandro-bonilla.jpg" alt="Alejandro Bonilla" width="160" height="160">
+    <div>
+      <h1>Alejandro Bonilla</h1>
+      <p class="lede">I design platforms that run virtual machines, containers and AI workloads side by side: Kubernetes, SUSE Virtualization, storage and NVIDIA GPUs. I test it all on real hardware in my home lab and write up what works.</p>
+      <nav class="links">
+        <a href="{{ site.Params.blog }}">Blog</a>
+        <a href="https://github.com/abonillabeeche">GitHub</a>
+        <a href="https://www.linkedin.com/in/alejandrobonilla">LinkedIn</a>
+        <a href="{{ site.Params.blog }}about/">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <section>
+    <h2>Latest from the blog</h2>
+    {{- with try (resources.GetRemote site.Params.feed) }}
+      {{- with .Err }}{{ errorf "fetching blog feed: %s" . }}{{ end }}
+      {{- $feed := .Value | transform.Unmarshal }}
+      <ul class="posts">
+      {{- range first site.Params.latest $feed.channel.item }}
+        <li>
+          <a href="{{ .link }}">{{ .title }}</a>
+          <time datetime="{{ time.Format "2006-01-02" .pubDate }}">{{ time.Format "Jan 2, 2006" .pubDate }}</time>
+          <p>{{ .description | plainify | htmlUnescape | truncate 180 }}</p>
+        </li>
+      {{- end }}
+      </ul>
+    {{- end }}
+    <p class="more"><a href="{{ site.Params.blog }}posts/">All posts →</a></p>
+  </section>
+
+  <section>
+    <h2>Open source work</h2>
+    <div class="cards">
+    {{- range hugo.Data.projects }}
+      <article class="card">
+        <h3>{{ .name }}</h3>
+        <span class="role">{{ .role }}</span>
+        <p>{{ .text }}</p>
+        <p class="card-links">{{ range $i, $l := .links }}{{ if $i }} · {{ end }}<a href="{{ $l.url }}">{{ $l.label }}</a>{{ end }}</p>
+      </article>
+    {{- end }}
+    </div>
+  </section>
+
+  <footer>
+    <p>© {{ now.Year }} Alejandro Bonilla · Opinions are my own and don't represent my employer.</p>
+  </footer>
+</main>
+</body>
+</html>
