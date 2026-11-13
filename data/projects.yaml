@@ -1,3 +1,9 @@
+- name: SUSE Virtualization how-to videos
+  role: Author
+  text: "A learning path of short narrated videos recorded on live SUSE Virtualization clusters: VMs, storage, networking, live migration, Rancher, add-ons and observability."
+  links:
+    - { label: "Watch", url: "https://harvester-demos.5glinux.com/" }
+    - { label: "Repo", url: "https://github.com/abonillabeeche/harvester-demos" }
 - name: Harvester CLI
   role: Maintainer
   text: "A kubectl-style command line for creating and managing VMs on SUSE Virtualization. v0.5.0 supports 1.9, prints GitOps-ready YAML and installs with Homebrew."
